@@ -1,6 +1,9 @@
 const express = require('express')
 let router = express.Router();
-const app = express()
-const helmet = require('helmet')
 
-app.use(helmet())
+router.get('/',(req,res,next)=>{
+    res.json({
+        msg:"router works"})
+})
+
+module.exports = router

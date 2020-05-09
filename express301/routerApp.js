@@ -1,10 +1,15 @@
 const express = require('express')
 const app = express()
-const helmet = require('require')
+const helmet = require('helmet')
 
 app.use(helmet())
-app.use(urlencoded({extended:false}))
+app.use(express.urlencoded({extended:false}))
 app.use(express.static('public'))
-app.use(json())
+app.use(express.json())
+
+const router = require('./theRouter')
+const userRouter = require('./userRouter')
+app.use('/',router)
+app.use('/user',userRouter)
 
 app.listen(3000)
